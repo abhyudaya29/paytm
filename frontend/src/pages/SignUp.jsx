@@ -6,6 +6,7 @@ import Button from '../components/Button'
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from 'react'
 import axios from "axios"
+const BASE_URL=import.meta.env.VITE_APP_BASE_URL
 const SignUp = () => {
   const[firstName,setfirstName]=useState("")
   const[lastName,setLastName]=useState("")
@@ -27,7 +28,7 @@ const SignUp = () => {
         <Placeholder1 onChange={(e)=>(setUserName(e.target.value))} label={"UserName"} placeholder={"abc@123"} type={"text"}/>
         <Placeholder1 onChange={(e)=>(setPassword(e.target.value))}label={"Password"} placeholder={"***"} type={"password"}/>
         <Button label={"SignUp"} onClick={async()=>{
-         const response= await axios.post("https://paytm-backend-t4no.onrender.com/api/v1/signUp",{
+         const response= await axios.post(BASE_URL+"/signUp",{
             username, 
             password, 
             firstName, 

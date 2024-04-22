@@ -6,13 +6,13 @@ import Button from '../components/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-
+const BASE_URL=import.meta.env.VITE_APP_BASE_URL
 const SignIn = () => {
   const[username,setUsername]=useState("")
   const[password,setPassword]=useState("")
   const navigate=useNavigate();
   const handleClink=async()=>{
-    const response=await axios.post("http://localhost:4000/api/v1/signin",{
+    const response=await axios.post(BASE_URL+"/signin"),{
       username,
       password
     });

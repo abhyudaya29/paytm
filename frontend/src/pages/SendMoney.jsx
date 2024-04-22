@@ -2,6 +2,7 @@ import { useParams, useSearchParams } from "react-router-dom"
 import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
+const BASE_URL=import.meta.env.VITE_APP_BASE_URL
  const SendMoney = () => {
   let[searchParams,setSearchParams]=useSearchParams();
   const id=searchParams.get("id");
@@ -12,7 +13,7 @@ import toast from "react-hot-toast";
   console.log(amount,">>amount")
   const sendMoney=async()=>{
     try {
-      const response=await axios.post(`https://paytm-backend-t4no.onrender.com/api/v1transfer`,{
+      const response=await axios.post(BASE_URL+"/transfer",{
       to:id,
       amount
     },{
