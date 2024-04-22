@@ -3,20 +3,23 @@ import axios from "axios"
 import Data from "./Data";
 const BASE_URL=import.meta.env.VITE_APP_BASE_URL
 const Users = () => {
-    const[users,setUsers]=useState([]);
-    const [filter,setFilter]=useState('')
-    console.log(filter,">>filter")
-    const fetchData=async()=>{
-       const response=await axios.get(BASE_URL+`/user/bulk?filter=${filter}`);
-       setUsers(response.data.user);
-       console.log(response.data.user,">>>fetched users")
-    }
-    // Todo debouncing
-    useEffect(()=>{
-        fetchData()
-        
+        const[users,setUsers]=useState([]);
+        const [filter,setFilter]=useState('')
+        console.log(filter,">>filter")
+        const fetchData=async()=>{
+        const response=await axios.get(BASE_URL+`/user/bulk?filter=${filter}`);
+        setUsers(response.data.user);
+        console.log(response.data.user,">>>fetched users")
+        }
+        // Todo debouncing
+        useEffect(()=>{
+            const timer=setTimeout(()=>{
+                fetchData();
 
-    },[filter])
+            },500)
+            return ()=>clearTimeout(timer);
+
+        },[filter])
   return (
     <>
     <div className="font-bold mt-6 text-lg">
