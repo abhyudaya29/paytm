@@ -12,7 +12,7 @@ const SignIn = () => {
   const[password,setPassword]=useState("")
   const navigate=useNavigate();
   const handleClink=async()=>{
-    const response=await axios.post(BASE_URL+"/signin"),{
+    const response=await axios.post(BASE_URL+"/signin",{
       username,
       password
     });
