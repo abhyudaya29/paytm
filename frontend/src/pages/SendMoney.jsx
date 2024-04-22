@@ -12,7 +12,7 @@ import toast from "react-hot-toast";
   console.log(amount,">>amount")
   const sendMoney=async()=>{
     try {
-      const response=await axios.post(`http://localhost:4000/api/v1/transfer`,{
+      const response=await axios.post(`https://paytm-backend-t4no.onrender.com/api/v1transfer`,{
       to:id,
       amount
     },{

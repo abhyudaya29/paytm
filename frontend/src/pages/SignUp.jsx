@@ -27,7 +27,7 @@ const SignUp = () => {
         <Placeholder1 onChange={(e)=>(setUserName(e.target.value))} label={"UserName"} placeholder={"abc@123"} type={"text"}/>
         <Placeholder1 onChange={(e)=>(setPassword(e.target.value))}label={"Password"} placeholder={"***"} type={"password"}/>
         <Button label={"SignUp"} onClick={async()=>{
-         const response= await axios.post("http://localhost:4000/api/v1/signUp",{
+         const response= await axios.post("https://paytm-backend-t4no.onrender.com/api/v1/signUp",{
             username, 
             password, 
             firstName, 

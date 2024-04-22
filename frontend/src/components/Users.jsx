@@ -7,7 +7,7 @@ const Users = () => {
     const [filter,setFilter]=useState('')
     console.log(filter,">>filter")
     const fetchData=async()=>{
-       const response=await axios.get(`http://localhost:4000/api/v1/user/bulk?filter=${filter}`);
+       const response=await axios.get(`https://paytm-backend-t4no.onrender.com/api/v1/user/bulk?filter=${filter}`);
        setUsers(response.data.user);
        console.log(response.data.user,">>>fetched users")
     }
