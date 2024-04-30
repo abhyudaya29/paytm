@@ -52,7 +52,9 @@ exports.signUp=async(req,res)=>{
             httpOnly:true,
         }
         const balanceAmount=1+Math.random()*1000;
+        console.log(balanceAmount,">>balanceAmount in backend")
         const addBalanceAmount=await addBalance(userId,balanceAmount);
+        console.log(addBalance,"addbalanceAmount backend")
         console.log(userData,">>>userData")
         return res.cookie("token",token,options).status(200).json({
             success:true,

@@ -7,6 +7,7 @@ const BASE_URL = import.meta.env.VITE_APP_BASE_URL;
 
 const SendMoney = () => {
   let [searchParams, setSearchParams] = useSearchParams();
+  const[apiError,setApiError]=useState("")
   const id = searchParams.get("id");
   console.log(id, ">>user id");
   const name = searchParams.get("name");
@@ -33,12 +34,14 @@ const SendMoney = () => {
       console.log(response, ">>response data");
     } catch (error) {
       console.log(error, ">>error while payment");
+      setApiError(error.response.data.message)
       toast.dismiss("Error In Payment");
       throw new Error(error);
     }
   };
 
   return (
+  
     <div className="flex justify-center h-screen bg-gray-100">
       
       <div className="h-full flex flex-col justify-center">
@@ -61,6 +64,7 @@ const SendMoney = () => {
               <h3 className="text-2xl font-semibold">{name}</h3>
             </div>
             <div className="space-y-4">
+              {apiError&& <p className="text-red">{apiError}</p>}
               <div className="space-y-2">
                 <label
                   className="text-sm font-medium leading-none"
@@ -68,6 +72,7 @@ const SendMoney = () => {
                 >
                   Amount (in Rs)
                 </label>
+                
                 <input
                   onChange={(e) => {
                     setAmount(e.target.value);

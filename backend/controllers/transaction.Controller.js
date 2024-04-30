@@ -17,7 +17,7 @@ exports.transactions=async (req,res)=>{
             userId:req.userId
         }).session(session);
         console.log(account,">>account info");
-        if(!account||account.balance<account){
+        if(!account||account.balance<amount){
             await session.abortTransaction();
             return res.status(404).json({
                 success:false,
